@@ -2,4 +2,4 @@
 clear all;
 clc;
 
-Main_Catia('K:\matlabGeo',1);
+Main_Catia(pwd,1);
