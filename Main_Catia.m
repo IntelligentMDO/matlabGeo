@@ -53,7 +53,7 @@ Para_Catia.Common.FileName_Save_CATPart = 'zFlyingWing';
 Para_Catia.GenWingPlan.Act_Draw = 0;                                        %是否生成机翼平面图
 
 Para_Catia.GenSection.Density_Airfoil = 100;                                %翼型弦向坐标数量
-Para_Catia.GenSection.Diameter_Fillet = 1;                                  %机翼后缘圆角直径(不后处理时自动为0)
+Para_Catia.GenSection.Diameter_Fillet = 4;                                  %机翼后缘圆角直径(不后处理时自动为0)
 
 Para_Catia.GenCATPart.Act_Debug = 0;                                        %是否开启Debug模式(遇错不停止并保存成.CATPart.Error)
 Para_Catia.GenCATPart.Act_Demo = 0;                                         %是否开启演示模式
@@ -238,15 +238,14 @@ if Para_Catia.GenCATPart.Mode_Post == 1 || Para_Catia.GenCATPart.Mode_Post == 2
         end
     end
     
-    % if Mode == 1 || Mode == 2
-    %     Span_Half = Data_Import(1).Panel(end,1);
-    % elseif Mode == 3
-    %     Span_Half = Data_Geometry(1).b/2 * 1000;
-    % end
-    % if Span_Half > 4000 && Para_Catia.GenSection.Diameter_Fillet <= 2 ||...
-    %    Span_Half < 4000 && Para_Catia.GenSection.Diameter_Fillet > 2
-    %     error('*** Error：GenSection.Diameter_Fillet ***');
-    % end
+    if Mode == 1 || Mode == 2
+        Span_Half = Data_Import(1).Panel(end,1);
+    elseif Mode == 3
+        Span_Half = Data_Geometry(1).b/2 * 1000;
+    end
+    if Span_Half > 4000 && Para_Catia.GenSection.Diameter_Fillet < 4
+        error('*** Error：GenSection.Diameter_Fillet ***');
+    end
 end
 
 if Para_Catia.GenSection.Diameter_Fillet ~= 0 && Para_Catia.GenCATPart.Mode_Post == 0  ||...
