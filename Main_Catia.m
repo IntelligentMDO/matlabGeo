@@ -124,7 +124,7 @@ if Mode == 1
                                                                                 0.2964, 0.1200, 0.3778, 1.8354;
                                                                                
                              8927.8     100       -2          35         9      0.3348, 0.6184, 0.0000, 0.0000,...
-                                                                            0.2964, 0.1200, 0.3778, 1.8354];
+                                                                                0.2964, 0.1200, 0.3778, 1.8354];
         
     elseif Mode_DataSource == 2
         load('ToolR_Catia_Inverse.mat');
@@ -275,8 +275,7 @@ if Para_Catia.GenCATPart.Mode_Post == 1
        max(Para_Catia.GenCATPart.Index_NonActSection_ICEM) > size(Data_Import(1).Panel,1)
         error('*** Error£ºGenCATPart.Index_NonActSection_ICEM ***');
     end
-    if sum(Para_Catia.GenCATPart.Index_NonActSection_ICEM) ~= 0 &&...
-       (size(Data_Import(1).Panel,1) - length(Para_Catia.GenCATPart.Index_NonActSection_ICEM) + 1 ~= 5)
+    if size(Data_Import(1).Panel,1) - length(Para_Catia.GenCATPart.Index_NonActSection_ICEM) + 1 ~= 5
         error('*** Error£ºData_Import.Panel & GenCATPart.Index_NonActSection_ICEM ***');
     end
 end
