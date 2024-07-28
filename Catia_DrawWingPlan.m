@@ -63,7 +63,7 @@ end
 %MAC
 x = [Data_Geometry.MAC_x, Data_Geometry.MAC_x + Data_Geometry.MAC_Length] * 1000;
 y = [0, 0];
-plot(x, y, 'LineWidth',5);
+plot(x, y, 'k', 'LineWidth',5);
 
 axis equal;
 grid on;

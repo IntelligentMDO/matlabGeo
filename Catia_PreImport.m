@@ -10,7 +10,7 @@ if sum(Data_Import.Root == 999) ~= 8
     if length(Data_Import.Root) ~= 13
         error('*** Error£∫Please Check Import ***')
     end
-    for nPanel = 1:size(Data_Import.Panel)
+    for nPanel = 1:size(Data_Import.Panel,1)
         if length(Data_Import.Panel(nPanel,:)) ~= 13
             error('*** Error£∫Please Check Import ***')
         end
@@ -41,7 +41,7 @@ if sum(Data_Import.Root == 999) ~= 8
         error('*** Error£∫Please Check Import(…œ∑¥Ω«) ***')
     end
 
-    for nPanel = 1:size(Data_Import.Panel)
+    for nPanel = 1:size(Data_Import.Panel,1)
         if ~(sum(isnan( Data_Import.Panel(nPanel, 6:13) )) == 7 && abs( Data_Import.Panel(nPanel, 6)) == 1e30) &&...
            ~(sum(isnan( Data_Import.Panel(nPanel, 6:9) )) == 3 && abs( Data_Import.Panel(nPanel, 6)) == 1e30) &&...
            ~(sum(isnan( Data_Import.Panel(nPanel, 10:13) )) == 3 && abs( Data_Import.Panel(nPanel, 10)) == 1e30) &&...

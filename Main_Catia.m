@@ -50,7 +50,7 @@ Para_Catia.Common.FileName_LoSa_Geometry = ['CatiaR_Geometry',FileName_AddOn];
 
 Para_Catia.Common.FileName_Save_CATPart = 'zFlyingWing';
 
-Para_Catia.GenWingPlan.Act_Draw = 0;                                        %是否生成机翼平面图
+Para_Catia.GenWingPlan.Act_Draw = 1;                                        %是否生成机翼平面图
 
 Para_Catia.GenSection.Density_Airfoil = 100;                                %翼型弦向坐标数量
 Para_Catia.GenSection.Diameter_Fillet = 4;                                  %机翼后缘圆角直径(不后处理时自动为0)
@@ -348,7 +348,7 @@ end
 fprintf('Generate CATPart...\n');
 for nIter = ((nStart_Catia-1)/Num_Thread+1):length(Data_Import)/Num_Thread
     
-    [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
+    % [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
     
     fprintf('剩余：%d\n',length(Data_Import)-(nIter-1)*Num_Thread);
     
@@ -359,7 +359,7 @@ for nIter = ((nStart_Catia-1)/Num_Thread+1):length(Data_Import)/Num_Thread
             Reboot(nThread) = Catia_GenCATPart(Dir, Para_Catia, Data_Geometry(nCatia), nCatia, nThread, Mode);
         end
     catch                                                                   %Excel偶发Bug
-        [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
+        % [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
         fprintf('\nRetry...\n');
         
         % parfor nThread = 1:Num_Thread
@@ -369,7 +369,7 @@ for nIter = ((nStart_Catia-1)/Num_Thread+1):length(Data_Import)/Num_Thread
         end
     end
     
-    [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
+    % [~,~] = dos('taskkill /s SERVER0 /f /t /im EXCEL.EXE');
     
     %计算体积
     if Para_Catia.GenCATPart.Act_SaveStl == 1
