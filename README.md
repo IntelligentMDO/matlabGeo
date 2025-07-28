@@ -1,5 +1,6 @@
 Software Requirement:
-Catia V5 6R-2017 or a higher version is required.
+Catia V5 6R-2017 or a higher version is required.'
+
 Environment Variable:
 Confirm that the working directory of Catia is included in the environment variables.
 
